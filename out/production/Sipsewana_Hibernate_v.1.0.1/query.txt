@@ -1,0 +1,30 @@
+Create table Student(
+    id varchar(10),
+    name varchar(40),
+    dob DATE,
+    email varchar(40),
+    address varchar(40),
+    tel int(10),
+    method varchar(8),
+
+    Constraint primary key(id)
+);
+
+Create table Program(
+    programId varchar(10),
+    program varchar(40),
+    duration varchar(10),
+    fee double,
+
+    Constraint primary key(programId)
+);
+
+Create table Student_Program(
+    id varchar(10),
+    programId varchar(10),
+    reg_date DATE,
+
+    constraint primary key (id,programId),
+    constraint foreign key (id) references Student(id),
+    constraint foreign key (programId) references Program(programId)
+)

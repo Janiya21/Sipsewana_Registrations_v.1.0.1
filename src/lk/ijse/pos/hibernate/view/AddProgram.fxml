@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="533.0" prefWidth="897.0" style="-fx-background-color: white;" stylesheets="@../assets/css/db.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.AddProgramController">
+   <children>
+      <ImageView fitHeight="385.0" fitWidth="638.0" layoutX="81.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/23899891.jpg" />
+         </image>
+         <effect>
+            <BoxBlur />
+         </effect>
+      </ImageView>
+      <TableView fx:id="tblPrograms" layoutX="304.0" layoutY="103.0" opacity="0.83" prefHeight="394.0" prefWidth="566.0">
+        <columns>
+          <TableColumn fx:id="colProgramId" prefWidth="103.0" text="Program Id" />
+          <TableColumn fx:id="colName" prefWidth="207.0" text="Name" />
+            <TableColumn fx:id="colDuration" prefWidth="110.0" text="Duration" />
+            <TableColumn fx:id="colFee" prefWidth="148.0" text="Full Fee" />
+        </columns>
+      </TableView>
+      <Label layoutX="33.0" layoutY="31.0" prefHeight="32.0" prefWidth="265.0" text="Add Programs">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="10.0" layoutY="79.0" prefHeight="3.0" prefWidth="889.0" />
+      <JFXTextField fx:id="txtName" layoutX="33.0" layoutY="185.0" prefHeight="31.0" prefWidth="238.0" promptText="Program Name" />
+      <JFXTextField fx:id="txtDuration" layoutX="33.0" layoutY="251.0" prefHeight="31.0" prefWidth="238.0" promptText="Duration" />
+      <JFXTextField fx:id="txtFee" layoutX="33.0" layoutY="311.0" prefHeight="31.0" prefWidth="238.0" promptText="Full Fee" />
+      <Button fx:id="btnGoBack" layoutX="35.0" layoutY="392.0" mnemonicParsing="false" onAction="#goBackOnAction" prefHeight="39.0" prefWidth="246.0" styleClass="btn2" text="Go Back" />
+      <Button fx:id="btnAdd" layoutX="39.0" layoutY="458.0" mnemonicParsing="false" onAction="#addProgramOnAction" prefHeight="39.0" prefWidth="238.0" styleClass="btn2" text="Add Program" />
+      <Label layoutX="33.0" layoutY="116.0" text="Program Id:" />
+      <Label fx:id="lblProgramId" layoutX="152.0" layoutY="116.0" prefHeight="21.0" prefWidth="91.0" text="p005">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

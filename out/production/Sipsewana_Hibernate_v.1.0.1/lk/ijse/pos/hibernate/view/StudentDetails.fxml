@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="514.0" prefWidth="1085.0" style="-fx-background-color: white;" stylesheets="@../assets/css/db.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.StudentDBController">
+
+    <children>
+      <ImageView fitHeight="410.0" fitWidth="671.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/images/23899891.jpg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="13.94" />
+         </effect>
+      </ImageView>
+        <Separator layoutX="274.0" layoutY="64.0" orientation="VERTICAL" prefHeight="410.0" prefWidth="6.0" />
+        <TableView fx:id="studentView" layoutX="297.0" layoutY="164.0" opacity="0.78" prefHeight="281.0" prefWidth="763.0">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="76.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="157.0" text="Name" />
+                <TableColumn fx:id="colEmail" prefWidth="144.0" text="Email" />
+            <TableColumn fx:id="colPayMethod" prefWidth="120.0" text="Pay Method" />
+                <TableColumn fx:id="colAddress" prefWidth="152.0" text="Address" />
+            <TableColumn fx:id="colTelNo" prefWidth="122.0" text="Tel No" />
+            </columns>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+        </TableView>
+      <JFXTextField fx:id="studentId" layoutX="32.0" layoutY="116.0" prefHeight="31.0" prefWidth="217.0" promptText="Enter Student's Id" />
+      <JFXButton fx:id="searchStudentBtn" ellipsisString="" layoutX="961.0" layoutY="110.0" onAction="#searchStudent" opacity="0.93" prefHeight="43.0" prefWidth="57.0" style="-fx-background-color: transparent;" text=" ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/search2.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="dltStudBtn" layoutX="28.0" layoutY="270.0" onAction="#dltStudent" opacity="0.56" prefHeight="46.0" prefWidth="217.0" styleClass="btn" text="Delete">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXButton fx:id="refreshBtn" ellipsisString="" layoutX="1018.0" layoutY="110.0" onAction="#refreshStudent" prefHeight="37.0" prefWidth="21.0" style="-fx-background-color: transparent;" text=" ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/refresh.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="btnBack" layoutX="32.0" layoutY="389.0" onAction="#backFromDb" opacity="0.72" prefHeight="46.0" prefWidth="208.0" styleClass="btn2" text="Back">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <JFXTextField fx:id="searchStuId" layoutX="297.0" layoutY="116.0" prefHeight="31.0" prefWidth="638.0" promptText="search here" />
+      <JFXButton fx:id="btnClear" layoutX="32.0" layoutY="193.0" onAction="#btnAdd" opacity="0.56" prefHeight="46.0" prefWidth="217.0" styleClass="btn" text="Clear">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Separator layoutY="65.0" prefHeight="0.0" prefWidth="1085.0" />
+      <Label layoutX="27.0" layoutY="14.0" prefHeight="48.0" prefWidth="310.0" text="Sudent Details">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="28.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

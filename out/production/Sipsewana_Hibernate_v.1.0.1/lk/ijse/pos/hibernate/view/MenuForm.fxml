@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="390.0" prefWidth="892.0" style="-fx-background-color: white;" stylesheets="@../assets/css/db.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.MenuFormController">
+   <children>
+      <Label layoutX="21.0" layoutY="14.0" prefHeight="48.0" prefWidth="310.0" text="Regstration Menu">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="28.0" />
+         </font>
+      </Label>
+      <Separator layoutY="61.0" prefHeight="15.0" prefWidth="911.0" />
+      <JFXButton fx:id="btnRegistration" layoutX="70.0" layoutY="111.0" onAction="#registerStudentOnAction" prefHeight="169.0" prefWidth="213.0" styleClass="btn2" text=" ">
+         <graphic>
+            <ImageView fitHeight="141.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/reg2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnViewDetails" layoutX="354.0" layoutY="111.0" onAction="#viewDetailsOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
+         <graphic>
+            <ImageView fitHeight="132.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/details2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton fx:id="btnAddProgram" layoutX="635.0" layoutY="111.0" onAction="#addProgramOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
+         <graphic>
+            <ImageView fitHeight="124.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/images/addProgram2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="139.0" layoutY="280.0" prefHeight="21.0" prefWidth="105.0" text="Registration" />
+      <Label layoutX="412.0" layoutY="280.0" prefHeight="21.0" prefWidth="88.0" text="View Details" />
+      <Label layoutX="688.0" layoutY="280.0" prefHeight="21.0" prefWidth="99.0" text="Add Program" />
+      <Label layoutX="738.0" layoutY="355.0" prefHeight="21.0" prefWidth="156.0" text="2021 All right Reserved" />
+   </children>
+</AnchorPane>
