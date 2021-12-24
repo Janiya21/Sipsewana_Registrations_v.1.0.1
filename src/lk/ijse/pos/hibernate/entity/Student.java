@@ -1,10 +1,12 @@
 package lk.ijse.pos.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table
 public class Student {
     @Id
     private String id;
@@ -14,6 +16,9 @@ public class Student {
     private String address;
     private int tel;
     private String method;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private final List<Student_Program> programList = new ArrayList<>();
 
     public Student() {
     }
@@ -94,7 +99,7 @@ public class Student {
                 ", address='" + address + '\'' +
                 ", tel=" + tel +
                 ", method='" + method + '\'' +
+                ", programList=" + programList +
                 '}';
     }
-
 }

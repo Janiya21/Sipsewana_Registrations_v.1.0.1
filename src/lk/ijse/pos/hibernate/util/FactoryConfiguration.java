@@ -2,6 +2,7 @@ package lk.ijse.pos.hibernate.util;
 
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
+import lk.ijse.pos.hibernate.entity.Student_Program;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -17,7 +18,7 @@ public class FactoryConfiguration {
 
         StandardServiceRegistry sReg=new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
 
-        Metadata mData=new MetadataSources(sReg).addAnnotatedClass(Student.class).addAnnotatedClass(Program.class).getMetadataBuilder().build();
+        Metadata mData=new MetadataSources(sReg).addAnnotatedClass(Student.class).addAnnotatedClass(Program.class).addAnnotatedClass(Student_Program.class).getMetadataBuilder().build();
 
         return mData.getSessionFactoryBuilder().build();
 

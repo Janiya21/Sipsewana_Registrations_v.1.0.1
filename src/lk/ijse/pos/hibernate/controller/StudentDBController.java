@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 import lk.ijse.pos.hibernate.bo.BOFactory;
 import lk.ijse.pos.hibernate.bo.custom.impl.StudentBOImpl;
 import lk.ijse.pos.hibernate.dto.StudentDTO;
+import lk.ijse.pos.hibernate.entity.Student;
+import lk.ijse.pos.hibernate.entity.Student_Program;
 
 import java.io.IOException;
 import java.util.List;
@@ -102,7 +104,8 @@ public class StudentDBController {
 
     @FXML
     void btnAdd(ActionEvent event) {
-
+        /*Student stu1 = new Student();
+        Student_Program sp1 = new Student_Program("sp-001",)*/
     }
 
     @FXML

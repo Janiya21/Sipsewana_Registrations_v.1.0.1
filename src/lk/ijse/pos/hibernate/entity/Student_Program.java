@@ -1,23 +1,29 @@
 package lk.ijse.pos.hibernate.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table
 public class Student_Program {
-
     @Id
     private String id;
-    private String programId;
+
+    @ManyToOne @JoinColumn
+    private Student student;
+
+    @ManyToOne @JoinColumn
+    private Program program;
+
     private Date reg_date;
 
     public Student_Program() {
     }
 
-    public Student_Program(String id, String programId, Date reg_date) {
+    public Student_Program(String id, Student student, Program program, Date reg_date) {
         this.id = id;
-        this.programId = programId;
+        this.student = student;
+        this.program = program;
         this.reg_date = reg_date;
     }
 
@@ -29,12 +35,20 @@ public class Student_Program {
         this.id = id;
     }
 
-    public String getProgramId() {
-        return programId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setProgramId(String programId) {
-        this.programId = programId;
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
     }
 
     public Date getReg_date() {
@@ -49,7 +63,8 @@ public class Student_Program {
     public String toString() {
         return "Student_Program{" +
                 "id='" + id + '\'' +
-                ", programId='" + programId + '\'' +
+                ", student=" + student +
+                ", program=" + program +
                 ", reg_date=" + reg_date +
                 '}';
     }

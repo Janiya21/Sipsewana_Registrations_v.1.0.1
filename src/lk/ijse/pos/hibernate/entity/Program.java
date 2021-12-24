@@ -2,14 +2,22 @@ package lk.ijse.pos.hibernate.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table
 public class Program {
     @Id
     private String programId;
     private String program;
     private String duration;
     private double fee;
+
+    @OneToMany(mappedBy = "program")
+    private final List<Student_Program> studentList = new ArrayList<>();
 
     public Program() {
     }
@@ -55,11 +63,12 @@ public class Program {
 
     @Override
     public String toString() {
-        return "Project{" +
+        return "Program{" +
                 "programId='" + programId + '\'' +
                 ", program='" + program + '\'' +
                 ", duration='" + duration + '\'' +
                 ", fee=" + fee +
+                ", studentList=" + studentList +
                 '}';
     }
 }
