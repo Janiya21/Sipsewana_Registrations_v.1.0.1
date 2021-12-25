@@ -11,4 +11,5 @@ public interface ProgramDAO extends SuperDAO {
     public List<Program> getAllPrograms();
     public boolean addProgram(Program entity);
     public String generateId();
+    public Program getProgramObject(String hql);
 }

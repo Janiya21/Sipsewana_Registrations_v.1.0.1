@@ -2,20 +2,19 @@ package lk.ijse.pos.hibernate.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name="student")
 public class Student {
     @Id
-    private String id;
+    @GeneratedValue
+    private int id;
     private String name;
-    private Date dob;
+    private String dob;
     private String email;
     private String address;
-    private int tel;
-    private String method;
+    private String tel;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private final List<Student_Program> programList = new ArrayList<>();
@@ -23,21 +22,20 @@ public class Student {
     public Student() {
     }
 
-    public Student(String id, String name, Date dob, String email, String address, int tel, String method) {
+    public Student(int id, String name, String dob, String email, String address, String tel) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.email = email;
         this.address = address;
         this.tel = tel;
-        this.method = method;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -49,11 +47,11 @@ public class Student {
         this.name = name;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -73,33 +71,15 @@ public class Student {
         this.address = address;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", dob=" + dob +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", tel=" + tel +
-                ", method='" + method + '\'' +
-                ", programList=" + programList +
-                '}';
+    public List<Student_Program> getProgramList() {
+        return programList;
     }
 }

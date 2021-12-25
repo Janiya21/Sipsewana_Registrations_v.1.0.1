@@ -22,7 +22,8 @@ public class ProgramBOImpl implements ProgramBO {
 
         for (Program pr : programIds){
             idList.add(new ProgramDTO(
-                    pr.getProgramId()
+                    pr.getProgramId(),
+                    pr.getFee()
             ));
         }
         return idList;
@@ -43,6 +44,11 @@ public class ProgramBOImpl implements ProgramBO {
         }
         return prList;
 
+    }
+
+    @Override
+    public Program getProgramObject(String obj){
+        return programDAO.getProgramObject(obj);
     }
 
     @Override

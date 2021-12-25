@@ -14,10 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.pos.hibernate.bo.BOFactory;
+import lk.ijse.pos.hibernate.bo.custom.impl.ProgramBOImpl;
 import lk.ijse.pos.hibernate.bo.custom.impl.StudentBOImpl;
 import lk.ijse.pos.hibernate.dto.StudentDTO;
-import lk.ijse.pos.hibernate.entity.Student;
-import lk.ijse.pos.hibernate.entity.Student_Program;
 
 import java.io.IOException;
 import java.util.List;
@@ -68,7 +67,8 @@ public class StudentDBController {
     private JFXButton btnClear;
 
     private final ObservableList<StudentDTO> tmList = FXCollections.observableArrayList();
-    StudentBOImpl customerBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
+    StudentBOImpl studentBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
+    ProgramBOImpl programBOImpl = (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
 
     public void initialize() throws Exception {
         setTableData();
@@ -82,15 +82,14 @@ public class StudentDBController {
         colPayMethod.setCellValueFactory(new PropertyValueFactory("method"));
         colTelNo.setCellValueFactory(new PropertyValueFactory("tel"));
 
-        List<StudentDTO> all = customerBOImpl.getAll();
+        List<StudentDTO> all = studentBOImpl.getAll();
         for(StudentDTO dto : all) {
             StudentDTO tm = new StudentDTO(
                     dto.getId(),
                     dto.getName(),
                     dto.getEmail(),
                     dto.getAddress(),
-                    dto.getTel(),
-                    dto.getMethod()
+                    dto.getTel()
             );
             tmList.add(tm);
         }
@@ -104,8 +103,6 @@ public class StudentDBController {
 
     @FXML
     void btnAdd(ActionEvent event) {
-        /*Student stu1 = new Student();
-        Student_Program sp1 = new Student_Program("sp-001",)*/
     }
 
     @FXML

@@ -1,3 +1,5 @@
+package lk.ijse.pos.hibernate;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +18,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("lk/ijse/pos/hibernate/view/MenuForm.fxml")));
+        Parent root = FXMLLoader.load(this.getClass().getResource("view/MenuForm.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         stage.setTitle("Login Session");

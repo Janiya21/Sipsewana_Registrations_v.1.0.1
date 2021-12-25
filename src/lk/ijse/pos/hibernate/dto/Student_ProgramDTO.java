@@ -5,10 +5,11 @@ import java.util.Date;
 public class Student_ProgramDTO {
     private String id;
     private String programId;
+    private String fee;
 
-    public Student_ProgramDTO(String id, String programId) {
-        this.id = id;
+    public Student_ProgramDTO(String programId, String fee) {
         this.programId = programId;
+        this.fee = fee;
     }
 
     public String getId() {
@@ -27,11 +28,20 @@ public class Student_ProgramDTO {
         this.programId = programId;
     }
 
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
     @Override
     public String toString() {
         return "Student_ProgramDTO{" +
                 "id='" + id + '\'' +
                 ", programId='" + programId + '\'' +
+                ", fee='" + fee + '\'' +
                 '}';
     }
 }

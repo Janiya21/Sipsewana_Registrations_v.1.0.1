@@ -16,9 +16,10 @@ public class FactoryConfiguration {
 
     private static SessionFactory buildSessionFactory(){
 
-        StandardServiceRegistry sReg=new StandardServiceRegistryBuilder().loadProperties("hibernate.properties").build();
+        StandardServiceRegistry sReg=new StandardServiceRegistryBuilder().loadProperties("lk/ijse/pos/hibernate/hibernate.properties").build();
 
-        Metadata mData=new MetadataSources(sReg).addAnnotatedClass(Student.class).addAnnotatedClass(Program.class).addAnnotatedClass(Student_Program.class).getMetadataBuilder().build();
+        Metadata mData=new MetadataSources(sReg).addAnnotatedClass(Program.class).addAnnotatedClass(Student.class).addAnnotatedClass(Student_Program.class).
+                getMetadataBuilder().build();
 
         return mData.getSessionFactoryBuilder().build();
 

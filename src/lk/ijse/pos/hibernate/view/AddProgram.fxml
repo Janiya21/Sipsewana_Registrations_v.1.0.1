@@ -42,7 +42,7 @@
       <Button fx:id="btnGoBack" layoutX="35.0" layoutY="392.0" mnemonicParsing="false" onAction="#goBackOnAction" prefHeight="39.0" prefWidth="246.0" styleClass="btn2" text="Go Back" />
       <Button fx:id="btnAdd" layoutX="39.0" layoutY="458.0" mnemonicParsing="false" onAction="#addProgramOnAction" prefHeight="39.0" prefWidth="238.0" styleClass="btn2" text="Add Program" />
       <Label layoutX="33.0" layoutY="116.0" text="Program Id:" />
-      <Label fx:id="lblProgramId" layoutX="152.0" layoutY="116.0" prefHeight="21.0" prefWidth="91.0" text="p005">
+      <Label fx:id="lblProgramId" layoutX="139.0" layoutY="116.0" prefHeight="21.0" prefWidth="91.0" text="p005">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

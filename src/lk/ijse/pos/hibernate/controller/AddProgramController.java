@@ -63,6 +63,9 @@ public class AddProgramController {
     @FXML
     private Label lblProgramId;
 
+    @FXML
+    private TextField txtId;
+
     private final ObservableList<ProgramDTO> prList = FXCollections.observableArrayList();
     ProgramBOImpl programBOImpl= (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
 
@@ -91,7 +94,8 @@ public class AddProgramController {
 
     @FXML
     void addProgramOnAction(ActionEvent event) {
-        Program program = new Program("p004","Software Engineering","2 years",200000);
+        Program program = new Program(lblProgramId.getText(),"Software Engineering","2 years",200000);
+
         boolean b = programBOImpl.addProgram(program);
         if(b){
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();

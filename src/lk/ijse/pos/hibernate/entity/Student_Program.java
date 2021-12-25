@@ -1,37 +1,45 @@
 package lk.ijse.pos.hibernate.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
-@Table
+@Table(name="student_program")
 public class Student_Program {
     @Id
-    private String id;
+    @GeneratedValue
+    private int id;
 
-    @ManyToOne @JoinColumn
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="student_id")
     private Student student;
 
-    @ManyToOne @JoinColumn
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="program_id")
     private Program program;
 
-    private Date reg_date;
+    private String reg_date;
 
     public Student_Program() {
     }
 
-    public Student_Program(String id, Student student, Program program, Date reg_date) {
+    public Student_Program(Student student, Program program, String reg_date) {
+        this.student = student;
+        this.program = program;
+        this.reg_date = reg_date;
+    }
+
+    public Student_Program(int id, Student student, Program program, String reg_date) {
         this.id = id;
         this.student = student;
         this.program = program;
         this.reg_date = reg_date;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -51,11 +59,11 @@ public class Student_Program {
         this.program = program;
     }
 
-    public Date getReg_date() {
+    public String getReg_date() {
         return reg_date;
     }
 
-    public void setReg_date(Date reg_date) {
+    public void setReg_date(String reg_date) {
         this.reg_date = reg_date;
     }
 
@@ -65,7 +73,7 @@ public class Student_Program {
                 "id='" + id + '\'' +
                 ", student=" + student +
                 ", program=" + program +
-                ", reg_date=" + reg_date +
+                ", reg_date='" + reg_date + '\'' +
                 '}';
     }
 }

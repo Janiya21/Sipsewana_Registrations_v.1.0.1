@@ -8,17 +8,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import lk.ijse.pos.hibernate.bo.BOFactory;
 import lk.ijse.pos.hibernate.bo.custom.impl.ProgramBOImpl;
+import lk.ijse.pos.hibernate.bo.custom.impl.StudentBOImpl;
 import lk.ijse.pos.hibernate.dao.custom.ProgramDAO;
 import lk.ijse.pos.hibernate.dto.ProgramDTO;
 import lk.ijse.pos.hibernate.dto.Student_ProgramDTO;
+import lk.ijse.pos.hibernate.entity.Program;
+import lk.ijse.pos.hibernate.entity.Student;
 import lk.ijse.pos.hibernate.entity.Student_Program;
 
 import java.io.IOException;
@@ -26,6 +26,15 @@ import java.util.List;
 import java.util.Objects;
 
 public class RegStudentController {
+
+    @FXML
+    public Label lblDate;
+
+    @FXML
+    public Label lblTime;
+
+    @FXML
+    public Label lblTotal;
 
     @FXML
     private JFXTextField txtName;
@@ -55,7 +64,7 @@ public class RegStudentController {
     private TableView<Student_ProgramDTO> tblDetails;
 
     @FXML
-    private TableColumn<Student_ProgramDTO, ?> colStuId;
+    public TableColumn<Student_ProgramDTO,?> colFee;
 
     @FXML
     private TableColumn<Student_ProgramDTO, ?> colCourseId;
@@ -68,21 +77,22 @@ public class RegStudentController {
 
     ObservableList<Student_ProgramDTO> allList = FXCollections.observableArrayList();
     ProgramBOImpl programBOImpl = (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
+    StudentBOImpl studentBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
 
     public void initialize(){
-        colStuId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("ProgramId"));
+        colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
+        loadIds();
 
+    }
+
+    private void loadIds(){
         List<ProgramDTO> allIds = programBOImpl.getCourseIds();
-
         ObservableList<String> idObs = FXCollections.observableArrayList();
-
         for (ProgramDTO p : allIds) {
             idObs.add(p.getProgramId());
         }
-
         cmbCourse.setItems(idObs);
-
     }
 
     public void goBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -91,6 +101,22 @@ public class RegStudentController {
 
     public void goNextOnAction(ActionEvent actionEvent) {
 
+        Student student1 = new Student();
+        student1.setName("Dissanayaka");
+        student1.setDob("2021-01-21");
+        student1.setEmail("J@33");
+        student1.setAddress("Colombo");
+        student1.setTel("0112509821");
+
+        Program p2 = programBOImpl.getProgramObject("p-001");
+
+        Student_Program sp1 = new Student_Program(student1,p2,"2021-01-21");
+
+        if(studentBOImpl.addStudent(sp1)){
+            new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
+        }
     }
 
     @FXML
@@ -110,10 +136,9 @@ public class RegStudentController {
     }
 
     public void setData(){
-        String id = lblId.getText();
         String cId = String.valueOf(cmbCourse.getValue());
 
-        Student_ProgramDTO sp = new Student_ProgramDTO(id,cId);
+        /*Student_ProgramDTO sp = new Student_ProgramDTO(id,cId);*/
         allList.add(sp);
         tblDetails.setItems(allList);
     }

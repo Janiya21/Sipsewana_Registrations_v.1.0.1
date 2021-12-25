@@ -32,6 +32,18 @@ public class ProgramDAOImpl implements ProgramDAO {
     }
 
     @Override
+    public Program getProgramObject(String hql){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Program program = session.get(Program.class, hql);
+
+        session.getTransaction().commit();
+
+        return program;
+    }
+
+    @Override
     public List<Program> getAllPrograms(){
         Session session = sessionFactory.openSession();
         session.beginTransaction();

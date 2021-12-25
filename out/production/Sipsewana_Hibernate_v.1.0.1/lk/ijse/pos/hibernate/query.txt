@@ -21,10 +21,11 @@ Create table Program(
 
 Create table Student_Program(
     id varchar(10),
-    programId varchar(10),
+    student varchar(10),
+    program varchar(10),
     reg_date DATE,
 
-    constraint primary key (id,programId),
-    constraint foreign key (id) references Student(id),
-    constraint foreign key (programId) references Program(programId)
+    constraint primary key (id),
+    constraint foreign key (student) references Student(id),
+    constraint foreign key (program) references Program(programId)
 )

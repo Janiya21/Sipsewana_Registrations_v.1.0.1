@@ -3,41 +3,38 @@ package lk.ijse.pos.hibernate.dto;
 import java.util.Date;
 
 public class StudentDTO {
-    private String id;
+    private int id;
     private String name;
     private Date dob;
     private String email;
     private String address;
-    private int tel;
-    private String method;
+    private String tel;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(String id, String name, String email, String address, int tel, String method) {
+    public StudentDTO(int id, String name, String email, String address, String tel) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.address = address;
         this.tel = tel;
-        this.method = method;
     }
 
-    public StudentDTO(String id, String name, Date dob, String email, String address, int tel, String method) {
+    public StudentDTO(int id, String name, Date dob, String email, String address, String method, String tel) {
         this.id = id;
         this.name = name;
         this.dob = dob;
         this.email = email;
         this.address = address;
         this.tel = tel;
-        this.method = method;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,20 +70,12 @@ public class StudentDTO {
         this.address = address;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public void setMethod(String method) {
-        this.method = method;
     }
 
     @Override
@@ -97,8 +86,7 @@ public class StudentDTO {
                 ", dob=" + dob +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", tel=" + tel +
-                ", method='" + method + '\'' +
+                ", tel='" + tel + '\'' +
                 '}';
     }
 }
