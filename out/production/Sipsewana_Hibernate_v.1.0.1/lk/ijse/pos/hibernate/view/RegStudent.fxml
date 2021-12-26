@@ -32,7 +32,7 @@
       </Label>
       <Separator layoutY="65.0" prefHeight="8.0" prefWidth="950.0" />
       <Label layoutX="33.0" layoutY="184.0" prefHeight="21.0" prefWidth="137.0" />
-      <JFXTextField fx:id="txtName" layoutX="272.0" layoutY="96.0" prefHeight="31.0" prefWidth="677.0" promptText="Student Name" />
+      <JFXTextField fx:id="txtName" layoutX="17.0" layoutY="95.0" prefHeight="31.0" prefWidth="902.0" promptText="Student Name" />
       <JFXDatePicker fx:id="txtDateOfBirth" layoutX="17.0" layoutY="163.0" prefHeight="31.0" prefWidth="448.0" promptText="Date Of Birth" />
       <JFXTextField fx:id="txtMail" layoutX="17.0" layoutY="230.0" prefHeight="31.0" prefWidth="448.0" promptText="Email" />
       <JFXTextField fx:id="txtTelephone" layoutX="23.0" layoutY="417.0" prefHeight="31.0" prefWidth="448.0" promptText="Telephone" />
@@ -40,12 +40,6 @@
       <Button fx:id="btnNext" layoutX="777.0" layoutY="497.0" mnemonicParsing="false" onAction="#goNextOnAction" prefHeight="39.0" prefWidth="137.0" styleClass="btn2" text="Next" />
       <JFXTextArea fx:id="txtAddress" layoutX="23.0" layoutY="298.0" prefHeight="68.0" prefWidth="448.0" promptText="Address" />
       <Separator layoutX="497.0" layoutY="150.0" orientation="VERTICAL" prefHeight="415.0" prefWidth="7.0" />
-      <Label layoutX="56.0" layoutY="96.0" prefHeight="32.0" prefWidth="35.0" text="ID :" />
-      <Label fx:id="lblId" layoutX="99.0" layoutY="96.0" prefHeight="32.0" prefWidth="97.0" text="20211201">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
       <Label fx:id="lblDate" layoutX="784.0" layoutY="21.0" prefHeight="32.0" prefWidth="89.0" text="2021-12-17">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="17.0" />
@@ -63,8 +57,8 @@
             <TableColumn fx:id="colFee" prefWidth="206.0" text="Fee" />
         </columns>
       </TableView>
-      <JFXComboBox fx:id="cmbCourse" layoutX="23.0" layoutY="486.0" prefHeight="31.0" prefWidth="301.0" promptText="course Id" />
-      <Button fx:id="btnAdd" layoutX="348.0" layoutY="482.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="128.0" text="Add" />
+      <JFXComboBox fx:id="cmbCourse" layoutX="20.0" layoutY="509.0" prefHeight="31.0" prefWidth="301.0" promptText="course Id" />
+      <Button fx:id="btnAdd" layoutX="347.0" layoutY="494.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="128.0" text="Add" />
       <Label layoutX="720.0" layoutY="433.0" prefHeight="31.0" prefWidth="89.0" text="Total  :" textFill="#b92222">
          <font>
             <Font name="System Bold" size="21.0" />

@@ -20,8 +20,11 @@ import lk.ijse.pos.hibernate.dto.Student_ProgramDTO;
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
 import lk.ijse.pos.hibernate.entity.Student_Program;
+import lk.ijse.pos.hibernate.view.tm.Program_fee;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -61,13 +64,13 @@ public class RegStudentController {
     private Label lblId;
 
     @FXML
-    private TableView<Student_ProgramDTO> tblDetails;
+    private TableView<Program_fee> tblDetails;
 
     @FXML
-    public TableColumn<Student_ProgramDTO,?> colFee;
+    public TableColumn<Program_fee,?> colFee;
 
     @FXML
-    private TableColumn<Student_ProgramDTO, ?> colCourseId;
+    private TableColumn<Program_fee, ?> colCourseId;
 
     @FXML
     private JFXComboBox<String> cmbCourse;
@@ -75,7 +78,10 @@ public class RegStudentController {
     @FXML
     private Button btnAdd;
 
-    ObservableList<Student_ProgramDTO> allList = FXCollections.observableArrayList();
+    List<ProgramDTO> allProgDetails = new ArrayList<>();
+    List<Program> prList = new ArrayList<>();
+    ObservableList<Program_fee> allList = FXCollections.observableArrayList();
+    HashMap<String, Double> ids_fee = new HashMap<String, Double>();
     ProgramBOImpl programBOImpl = (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
     StudentBOImpl studentBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
 
@@ -87,12 +93,19 @@ public class RegStudentController {
     }
 
     private void loadIds(){
-        List<ProgramDTO> allIds = programBOImpl.getCourseIds();
         ObservableList<String> idObs = FXCollections.observableArrayList();
-        for (ProgramDTO p : allIds) {
+
+        List<ProgramDTO> allIds_fee = programBOImpl.getProgramIds_fee();
+
+        for (ProgramDTO p : allIds_fee) {
             idObs.add(p.getProgramId());
         }
+
         cmbCourse.setItems(idObs);
+
+        for (ProgramDTO p : allIds_fee) {
+           ids_fee.put(p.getProgramId(),p.getFee());
+        }
     }
 
     public void goBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -102,17 +115,26 @@ public class RegStudentController {
     public void goNextOnAction(ActionEvent actionEvent) {
 
         Student student1 = new Student();
-        student1.setName("Dissanayaka");
-        student1.setDob("2021-01-21");
-        student1.setEmail("J@33");
-        student1.setAddress("Colombo");
-        student1.setTel("0112509821");
+        student1.setName(txtName.getText());
+        student1.setDob(String.valueOf(txtDateOfBirth.getValue()));
+        student1.setEmail(txtMail.getText());
+        student1.setAddress(txtAddress.getText());
+        student1.setTel(txtTelephone.getText());
 
-        Program p2 = programBOImpl.getProgramObject("p-001");
+        for (Program pr : prList) {
+            System.out.println(pr.getProgramId()+" asdasdf");
+            allProgDetails.add(new ProgramDTO(pr.getProgramId(),pr.getProgram(),pr.getDuration(),pr.getFee()));
+        }
 
-        Student_Program sp1 = new Student_Program(student1,p2,"2021-01-21");
+        List<Program> progList = new ArrayList<>();
 
-        if(studentBOImpl.addStudent(sp1)){
+        for (ProgramDTO ap : allProgDetails) {
+            progList.add(new Program(ap.getProgramId(),ap.getProgram(),ap.getDuration(),ap.getFee()));
+        }
+
+        boolean b = studentBOImpl.addStudentProgram(student1,progList,"2021-01-21");
+
+        if(b){
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
@@ -121,7 +143,11 @@ public class RegStudentController {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
-        setData();
+        setData(String.valueOf(cmbCourse.getValue()));
+
+        Program programObject = programBOImpl.getProgramObject(cmbCourse.getValue());
+        prList.add(programObject);
+
     }
 
     private void loadNext(String name) throws IOException {
@@ -135,12 +161,17 @@ public class RegStudentController {
         primaryStage.show();
     }
 
-    public void setData(){
-        String cId = String.valueOf(cmbCourse.getValue());
+    double tot = 0;
 
-        /*Student_ProgramDTO sp = new Student_ProgramDTO(id,cId);*/
-        allList.add(sp);
+    public void setData(String id){
+        double program_fee = ids_fee.get(id);
+
+        Program_fee pf = new Program_fee(id,program_fee);
+        allList.add(pf);
         tblDetails.setItems(allList);
+
+        tot+=program_fee;
+        lblTotal.setText(String.valueOf(tot));
     }
 
 }

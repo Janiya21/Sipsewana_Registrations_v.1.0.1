@@ -27,6 +27,7 @@ public class ProgramDAOImpl implements ProgramDAO {
         List<Program> list = session.createNativeQuery("SELECT * FROM Program", Program.class).list();
 
         session.getTransaction().commit();
+        session.close();
 
         return list;
     }

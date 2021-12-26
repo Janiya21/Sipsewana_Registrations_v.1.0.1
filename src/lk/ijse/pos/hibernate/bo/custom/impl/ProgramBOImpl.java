@@ -13,16 +13,18 @@ import java.util.List;
 
 public class ProgramBOImpl implements ProgramBO {
 
-    ProgramDAOImpl programDAO = DAOFactory.getInstance().getDAO(DAOType.PROGRAM);
+    ProgramDAOImpl programDAO = (ProgramDAOImpl) DAOFactory.getInstance().getDAO(DAOType.PROGRAM);
 
     @Override
-    public List<ProgramDTO> getCourseIds(){
+    public List<ProgramDTO> getProgramIds_fee(){
         List<Program> programIds = programDAO.getProgramIds();
         ArrayList<ProgramDTO> idList= new ArrayList<>();
 
         for (Program pr : programIds){
             idList.add(new ProgramDTO(
                     pr.getProgramId(),
+                    pr.getProgram(),
+                    pr.getDuration(),
                     pr.getFee()
             ));
         }

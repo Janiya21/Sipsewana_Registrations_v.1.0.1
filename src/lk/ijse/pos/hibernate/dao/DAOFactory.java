@@ -9,16 +9,22 @@ public class DAOFactory {
     private DAOFactory(){}
 
     public static DAOFactory getInstance(){
-        return (null == daoFactory) ? daoFactory = new DAOFactory() : daoFactory;
+        if (daoFactory==null) {
+            daoFactory = new DAOFactory();
+        }
+        return daoFactory;
     }
 
-    public <T extends SuperDAO>T getDAO(DAOType daoType){
+    public enum DAOTypes{
+        PROGRAM,STUDENT
+    }
+
+    public SuperDAO getDAO(DAOType daoType){
         switch (daoType){
             case PROGRAM:
-                return (T) new ProgramDAOImpl();
+                return new ProgramDAOImpl();
             case STUDENT:
-                return (T) new StudentDAOImpl();
-
+                return  new StudentDAOImpl();
             default:
                 return null;
         }
