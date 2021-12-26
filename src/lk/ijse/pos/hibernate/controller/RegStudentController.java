@@ -79,6 +79,7 @@ public class RegStudentController {
     private Button btnAdd;
 
     List<Program> prList = new ArrayList<>();
+    List<ProgramDTO> allProgDetails = new ArrayList<>();
     ObservableList<Program_fee> allList = FXCollections.observableArrayList();
     HashMap<String, Double> ids_fee = new HashMap<String, Double>();
     private double tot = 0;
@@ -111,8 +112,6 @@ public class RegStudentController {
     }
 
     public void goNextOnAction(ActionEvent actionEvent) {
-
-        List<ProgramDTO> allProgDetails = new ArrayList<>();
         List<Program> programList = new ArrayList<>();
 
         Student student1 = new Student();
@@ -121,10 +120,6 @@ public class RegStudentController {
         student1.setEmail(txtMail.getText());
         student1.setAddress(txtAddress.getText());
         student1.setTel(txtTelephone.getText());
-
-        for (Program pr : prList) {
-            allProgDetails.add(new ProgramDTO(pr.getProgramId(),pr.getProgram(),pr.getDuration(),pr.getFee()));
-        }
 
         for (ProgramDTO ap : allProgDetails) {
             programList.add(new Program(ap.getProgramId(),ap.getProgram(),ap.getDuration(),ap.getFee()));
@@ -141,8 +136,8 @@ public class RegStudentController {
     void btnAddOnAction(ActionEvent event) {
         setData(String.valueOf(cmbCourse.getValue()));
 
-        Program programObject = programBOImpl.getProgramObject(cmbCourse.getValue());
-        prList.add(programObject);
+        ProgramDTO programObject = programBOImpl.getProgramObject(cmbCourse.getValue());
+        allProgDetails.add(programObject);
 
     }
 

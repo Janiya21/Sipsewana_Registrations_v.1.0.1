@@ -33,8 +33,10 @@ public class ProgramBOImpl implements ProgramBO {
     }
 
     @Override
-    public Program getProgramObject(String obj){
-        return programDAO.getProgramObject(obj);
+    public ProgramDTO getProgramObject(String obj){
+
+        Program po = programDAO.getProgramObject(obj);
+        return new ProgramDTO(po.getProgramId(),po.getProgram(),po.getDuration(),po.getFee());
     }
 
     @Override

@@ -35,21 +35,7 @@ public class StudentBOImpl implements StudentBO {
 
     }
 
-    @Override
-    public boolean addStudent(List<Student_Program> stp){
-        return studentDAO.addStudent(stp);
-    }
-
     public boolean addStudentProgram(Student stu, List<Program> pro, String date){
         return studentDAO.addStudentProgram(stu,pro,date);
-    }
-
-    @Override
-    public int getLastStudent() {
-        return studentDAO.getLastStudent();
-    }
-
-    public Student getStudentObject(String hql) {
-        return studentDAO.getStudentObject(hql);
     }
 }

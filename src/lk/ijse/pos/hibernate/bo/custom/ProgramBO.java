@@ -11,5 +11,5 @@ public interface ProgramBO extends SuperBO {
     public List<ProgramDTO> getAllPrograms();
     public boolean addProgram(Program program);
     public String generateId();
-    public Program getProgramObject(String obj);
+    public ProgramDTO getProgramObject(String obj);
 }
