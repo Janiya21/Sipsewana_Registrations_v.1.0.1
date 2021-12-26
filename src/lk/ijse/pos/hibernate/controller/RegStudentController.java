@@ -78,10 +78,11 @@ public class RegStudentController {
     @FXML
     private Button btnAdd;
 
-    List<ProgramDTO> allProgDetails = new ArrayList<>();
     List<Program> prList = new ArrayList<>();
     ObservableList<Program_fee> allList = FXCollections.observableArrayList();
     HashMap<String, Double> ids_fee = new HashMap<String, Double>();
+    private double tot = 0;
+
     ProgramBOImpl programBOImpl = (ProgramBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.PROGRAM);
     StudentBOImpl studentBOImpl = (StudentBOImpl) BOFactory.getInstance().getBO(BOFactory.BOType.STUDENT);
 
@@ -95,17 +96,14 @@ public class RegStudentController {
     private void loadIds(){
         ObservableList<String> idObs = FXCollections.observableArrayList();
 
-        List<ProgramDTO> allIds_fee = programBOImpl.getProgramIds_fee();
+        List<ProgramDTO> allIds_fee = programBOImpl.getAllPrograms();
 
         for (ProgramDTO p : allIds_fee) {
             idObs.add(p.getProgramId());
+            ids_fee.put(p.getProgramId(),p.getFee());
         }
 
         cmbCourse.setItems(idObs);
-
-        for (ProgramDTO p : allIds_fee) {
-           ids_fee.put(p.getProgramId(),p.getFee());
-        }
     }
 
     public void goBackOnAction(ActionEvent actionEvent) throws IOException {
@@ -113,6 +111,9 @@ public class RegStudentController {
     }
 
     public void goNextOnAction(ActionEvent actionEvent) {
+
+        List<ProgramDTO> allProgDetails = new ArrayList<>();
+        List<Program> programList = new ArrayList<>();
 
         Student student1 = new Student();
         student1.setName(txtName.getText());
@@ -122,19 +123,14 @@ public class RegStudentController {
         student1.setTel(txtTelephone.getText());
 
         for (Program pr : prList) {
-            System.out.println(pr.getProgramId()+" asdasdf");
             allProgDetails.add(new ProgramDTO(pr.getProgramId(),pr.getProgram(),pr.getDuration(),pr.getFee()));
         }
 
-        List<Program> progList = new ArrayList<>();
-
         for (ProgramDTO ap : allProgDetails) {
-            progList.add(new Program(ap.getProgramId(),ap.getProgram(),ap.getDuration(),ap.getFee()));
+            programList.add(new Program(ap.getProgramId(),ap.getProgram(),ap.getDuration(),ap.getFee()));
         }
 
-        boolean b = studentBOImpl.addStudentProgram(student1,progList,"2021-01-21");
-
-        if(b){
+        if(studentBOImpl.addStudentProgram(student1,programList,"2021-01-21")){
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
@@ -160,8 +156,6 @@ public class RegStudentController {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-
-    double tot = 0;
 
     public void setData(String id){
         double program_fee = ids_fee.get(id);

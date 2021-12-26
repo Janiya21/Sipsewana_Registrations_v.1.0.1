@@ -8,7 +8,6 @@ import lk.ijse.pos.hibernate.entity.Program;
 import java.util.List;
 
 public interface ProgramBO extends SuperBO {
-    public List<ProgramDTO> getProgramIds_fee();
     public List<ProgramDTO> getAllPrograms();
     public boolean addProgram(Program program);
     public String generateId();

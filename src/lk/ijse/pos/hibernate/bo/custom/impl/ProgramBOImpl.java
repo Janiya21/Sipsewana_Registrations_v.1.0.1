@@ -16,22 +16,6 @@ public class ProgramBOImpl implements ProgramBO {
     ProgramDAOImpl programDAO = (ProgramDAOImpl) DAOFactory.getInstance().getDAO(DAOType.PROGRAM);
 
     @Override
-    public List<ProgramDTO> getProgramIds_fee(){
-        List<Program> programIds = programDAO.getProgramIds();
-        ArrayList<ProgramDTO> idList= new ArrayList<>();
-
-        for (Program pr : programIds){
-            idList.add(new ProgramDTO(
-                    pr.getProgramId(),
-                    pr.getProgram(),
-                    pr.getDuration(),
-                    pr.getFee()
-            ));
-        }
-        return idList;
-    }
-
-    @Override
     public List<ProgramDTO> getAllPrograms(){
         List<Program> programs = programDAO.getProgramIds();
         ArrayList<ProgramDTO> prList= new ArrayList<>();
