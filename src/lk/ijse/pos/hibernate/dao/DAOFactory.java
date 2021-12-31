@@ -15,10 +15,6 @@ public class DAOFactory {
         return daoFactory;
     }
 
-    public enum DAOTypes{
-        PROGRAM,STUDENT
-    }
-
     public SuperDAO getDAO(DAOType daoType){
         switch (daoType){
             case PROGRAM:

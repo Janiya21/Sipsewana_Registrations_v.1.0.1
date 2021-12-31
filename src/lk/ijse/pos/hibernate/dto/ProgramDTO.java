@@ -9,6 +9,12 @@ public class ProgramDTO {
     public ProgramDTO() {
     }
 
+    public ProgramDTO(String programId, String program, double fee) {
+        this.programId = programId;
+        this.program = program;
+        this.fee = fee;
+    }
+
     public ProgramDTO(String programId, String program, String duration, double fee) {
         this.programId = programId;
         this.program = program;

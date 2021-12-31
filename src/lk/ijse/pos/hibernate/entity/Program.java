@@ -12,7 +12,7 @@ public class Program {
     private String duration;
     private double fee;
 
-    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL,orphanRemoval = true)
     private final List<Student_Program> studentList = new ArrayList<>();
 
     public Program() {

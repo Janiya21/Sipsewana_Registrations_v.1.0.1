@@ -16,7 +16,7 @@
          </font>
       </Label>
       <Separator layoutY="61.0" prefHeight="15.0" prefWidth="911.0" />
-      <JFXButton fx:id="btnRegistration" layoutX="70.0" layoutY="111.0" onAction="#registerStudentOnAction" prefHeight="169.0" prefWidth="213.0" styleClass="btn2" text=" ">
+      <JFXButton fx:id="btnRegistration" focusTraversable="false" layoutX="70.0" layoutY="111.0" onAction="#registerStudentOnAction" prefHeight="169.0" prefWidth="213.0" styleClass="btn2" text=" ">
          <graphic>
             <ImageView fitHeight="141.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,7 +25,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnViewDetails" layoutX="354.0" layoutY="111.0" onAction="#viewDetailsOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
+      <JFXButton fx:id="btnViewDetails" focusTraversable="false" layoutX="354.0" layoutY="111.0" onAction="#viewDetailsOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
          <graphic>
             <ImageView fitHeight="132.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,7 +34,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="btnAddProgram" layoutX="635.0" layoutY="111.0" onAction="#addProgramOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
+      <JFXButton fx:id="btnAddProgram" focusTraversable="false" layoutX="635.0" layoutY="111.0" onAction="#addProgramOnAction" prefHeight="169.0" prefWidth="204.0" styleClass="btn2" text=" ">
          <graphic>
             <ImageView fitHeight="124.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
                <image>

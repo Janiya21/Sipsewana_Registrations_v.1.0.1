@@ -7,6 +7,8 @@ import lk.ijse.pos.hibernate.dao.custom.ProgramDAO;
 import lk.ijse.pos.hibernate.dao.custom.impl.ProgramDAOImpl;
 import lk.ijse.pos.hibernate.dto.ProgramDTO;
 import lk.ijse.pos.hibernate.entity.Program;
+import lk.ijse.pos.hibernate.entity.Student;
+import lk.ijse.pos.hibernate.entity.Student_Program;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,5 +49,14 @@ public class ProgramBOImpl implements ProgramBO {
     @Override
     public String generateId() {
         return programDAO.generateId();
+    }
+
+    public List<ProgramDTO> getProgramList(int id){
+        List<Program> programList = programDAO.getProgramList(id);
+        List<ProgramDTO> programDTOS = new ArrayList<>();
+        for (Program p : programList) {
+            programDTOS.add(new ProgramDTO(p.getProgramId(),p.getProgram(),p.getDuration(),p.getFee()));
+        }
+        return programDTOS;
     }
 }

@@ -38,4 +38,12 @@ public class StudentBOImpl implements StudentBO {
     public boolean addStudentProgram(Student stu, List<Program> pro, String date){
         return studentDAO.addStudentProgram(stu,pro,date);
     }
+
+    public boolean deleteStudent(Student_Program stu){
+        return studentDAO.deleteStudent(stu);
+    }
+
+    public Student_Program getStuPro(int stu_id){
+        return studentDAO.getRelevantStuPro(stu_id);
+    }
 }

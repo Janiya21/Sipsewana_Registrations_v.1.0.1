@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="1085.0" style="-fx-background-color: white;" stylesheets="@../assets/css/db.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.StudentDBController">
+<AnchorPane prefHeight="514.0" prefWidth="1096.0" style="-fx-background-color: white;" stylesheets="@../assets/css/db.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.StudentDBController">
 
     <children>
       <ImageView fitHeight="410.0" fitWidth="671.0" layoutX="15.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
@@ -24,22 +24,20 @@
             <GaussianBlur radius="13.94" />
          </effect>
       </ImageView>
-        <Separator layoutX="274.0" layoutY="64.0" orientation="VERTICAL" prefHeight="410.0" prefWidth="6.0" />
-        <TableView fx:id="studentView" layoutX="297.0" layoutY="164.0" opacity="0.78" prefHeight="281.0" prefWidth="763.0">
+        <Separator layoutX="659.0" layoutY="82.0" orientation="VERTICAL" prefHeight="403.0" prefWidth="5.0" />
+        <TableView fx:id="studentView" layoutX="34.0" layoutY="166.0" opacity="0.78" prefHeight="234.0" prefWidth="605.0">
             <columns>
-                <TableColumn fx:id="colId" prefWidth="76.0" text="ID" />
-                <TableColumn fx:id="colName" prefWidth="157.0" text="Name" />
-                <TableColumn fx:id="colEmail" prefWidth="144.0" text="Email" />
-            <TableColumn fx:id="colPayMethod" prefWidth="120.0" text="Pay Method" />
-                <TableColumn fx:id="colAddress" prefWidth="152.0" text="Address" />
-            <TableColumn fx:id="colTelNo" prefWidth="122.0" text="Tel No" />
+                <TableColumn fx:id="colId" prefWidth="61.0" text="ID" />
+                <TableColumn fx:id="colName" prefWidth="156.0" text="Name" />
+                <TableColumn fx:id="colEmail" prefWidth="140.0" text="Email" />
+                <TableColumn fx:id="colAddress" prefWidth="133.0" text="Address" />
+            <TableColumn fx:id="colTelNo" prefWidth="115.0" text="Tel No" />
             </columns>
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
         </TableView>
-      <JFXTextField fx:id="studentId" layoutX="32.0" layoutY="116.0" prefHeight="31.0" prefWidth="217.0" promptText="Enter Student's Id" />
-      <JFXButton fx:id="searchStudentBtn" ellipsisString="" layoutX="961.0" layoutY="110.0" onAction="#searchStudent" opacity="0.93" prefHeight="43.0" prefWidth="57.0" style="-fx-background-color: transparent;" text=" ">
+      <JFXButton fx:id="searchStudentBtn" ellipsisString="" layoutX="514.0" layoutY="110.0" onAction="#searchStudent" opacity="0.93" prefHeight="43.0" prefWidth="57.0" style="-fx-background-color: transparent;" text=" ">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -50,11 +48,11 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="dltStudBtn" layoutX="28.0" layoutY="270.0" onAction="#dltStudent" opacity="0.56" prefHeight="46.0" prefWidth="217.0" styleClass="btn" text="Delete">
+      <JFXButton fx:id="dltStudBtn" layoutX="442.0" layoutY="421.0" onAction="#dltStudent" opacity="0.56" prefHeight="46.0" prefWidth="186.0" styleClass="btn" text="Delete">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXButton fx:id="refreshBtn" ellipsisString="" layoutX="1018.0" layoutY="110.0" onAction="#refreshStudent" prefHeight="37.0" prefWidth="21.0" style="-fx-background-color: transparent;" text=" ">
+      <JFXButton fx:id="refreshBtn" ellipsisString="" layoutX="571.0" layoutY="110.0" onAction="#refreshStudent" prefHeight="37.0" prefWidth="21.0" style="-fx-background-color: transparent;" text=" ">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -65,20 +63,37 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton fx:id="btnBack" layoutX="32.0" layoutY="389.0" onAction="#backFromDb" opacity="0.72" prefHeight="46.0" prefWidth="208.0" styleClass="btn2" text="Back">
+      <JFXButton fx:id="btnBack" layoutX="47.0" layoutY="421.0" onAction="#backFromDb" opacity="0.72" prefHeight="46.0" prefWidth="186.0" styleClass="btn2" text="Back">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
-      <JFXTextField fx:id="searchStuId" layoutX="297.0" layoutY="116.0" prefHeight="31.0" prefWidth="638.0" promptText="search here" />
-      <JFXButton fx:id="btnClear" layoutX="32.0" layoutY="193.0" onAction="#btnAdd" opacity="0.56" prefHeight="46.0" prefWidth="217.0" styleClass="btn" text="Clear">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
+      <JFXTextField fx:id="searchStuId" layoutX="34.0" layoutY="116.0" prefHeight="31.0" prefWidth="465.0" promptText="search here" />
       <Separator layoutY="65.0" prefHeight="0.0" prefWidth="1085.0" />
       <Label layoutX="27.0" layoutY="14.0" prefHeight="48.0" prefWidth="310.0" text="Sudent Details">
          <font>
             <Font name="Berlin Sans FB Bold" size="28.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblProgramDetails" layoutX="684.0" layoutY="166.0" prefHeight="234.0" prefWidth="389.0">
+        <columns>
+          <TableColumn fx:id="colProgramId" prefWidth="82.0" text=" ID" />
+          <TableColumn fx:id="colProgramName" prefWidth="195.0" text="Name" />
+            <TableColumn fx:id="colFee" prefWidth="114.0" text="Fee" />
+        </columns>
+      </TableView>
+      <Label layoutX="860.0" layoutY="435.0" prefHeight="21.0" prefWidth="97.0" text="Tootal  :">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="972.0" layoutY="435.0" prefHeight="31.0" prefWidth="97.0" text="000000.00" textFill="#e41818">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="684.0" layoutY="110.0" prefHeight="31.0" prefWidth="310.0" text="Student's Program Details">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
     </children>

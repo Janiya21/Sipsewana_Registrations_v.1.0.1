@@ -4,9 +4,12 @@ import lk.ijse.pos.hibernate.dao.custom.ProgramDAO;
 import lk.ijse.pos.hibernate.dto.ProgramDTO;
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
+import lk.ijse.pos.hibernate.entity.Student_Program;
 import lk.ijse.pos.hibernate.util.FactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.List;
@@ -42,6 +45,19 @@ public class ProgramDAOImpl implements ProgramDAO {
         session.getTransaction().commit();
 
         return program;
+    }
+
+    public List<Program> getProgramList(int id){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Query<Program> query = session.createQuery("SELECT sp.program FROM Student_Program sp WHERE sp.student.id = :stu_id", Program.class);
+        query.setParameter("stu_id", id);
+        List<Program> list = query.list();
+
+        session.getTransaction().commit();
+
+        return list;
     }
 
     @Override

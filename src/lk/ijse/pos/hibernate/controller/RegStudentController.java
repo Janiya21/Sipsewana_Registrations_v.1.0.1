@@ -1,6 +1,9 @@
 package lk.ijse.pos.hibernate.controller;
 
 import com.jfoenix.controls.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import lk.ijse.pos.hibernate.bo.BOFactory;
 import lk.ijse.pos.hibernate.bo.custom.impl.ProgramBOImpl;
 import lk.ijse.pos.hibernate.bo.custom.impl.StudentBOImpl;
@@ -23,10 +27,9 @@ import lk.ijse.pos.hibernate.entity.Student_Program;
 import lk.ijse.pos.hibernate.view.tm.Program_fee;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.*;
 
 public class RegStudentController {
 
@@ -91,6 +94,7 @@ public class RegStudentController {
         colCourseId.setCellValueFactory(new PropertyValueFactory<>("ProgramId"));
         colFee.setCellValueFactory(new PropertyValueFactory<>("fee"));
         loadIds();
+        loadDateAndTime();
 
     }
 
@@ -125,7 +129,7 @@ public class RegStudentController {
             programList.add(new Program(ap.getProgramId(),ap.getProgram(),ap.getDuration(),ap.getFee()));
         }
 
-        if(studentBOImpl.addStudentProgram(student1,programList,"2021-01-21")){
+        if(studentBOImpl.addStudentProgram(student1,programList,lblDate.getText())){
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
@@ -161,6 +165,26 @@ public class RegStudentController {
 
         tot+=program_fee;
         lblTotal.setText(String.valueOf(tot));
+    }
+
+    private void loadDateAndTime() {
+        // load Date
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        lblDate.setText(f.format(date));
+
+        // load Time
+        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime currentTime = LocalTime.now();
+            lblTime.setText(
+                    currentTime.getHour() + " : " + currentTime.getMinute() +
+                            " : " + currentTime.getSecond()
+            );
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        time.setCycleCount(Animation.INDEFINITE);
+        time.play();
     }
 
 }

@@ -5,9 +5,12 @@ import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
 import lk.ijse.pos.hibernate.entity.Student_Program;
 import lk.ijse.pos.hibernate.util.FactoryConfiguration;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
+import org.hibernate.query.Query;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -87,9 +90,36 @@ public class StudentDAOImpl implements StudentDAO {
         session.beginTransaction();
 
         Student student = session.get(Student.class, hql);
-
         session.getTransaction().commit();
 
         return student;
+    }
+
+    public Student_Program getRelevantStuPro(int stu_id){
+        Session session=sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        NativeQuery<Student_Program> nativeQuery = session.createNativeQuery("SELECT * FROM Student_Program WHERE student_id = :id", Student_Program.class);
+        nativeQuery.setParameter("id",stu_id);
+
+        Student_Program sp = nativeQuery.setMaxResults(1).uniqueResult();
+
+        nativeQuery.list();
+
+        System.out.println(sp.getId()+"pppppppppppppppp");
+
+        transaction.commit();
+        return sp;
+    }
+
+    public boolean deleteStudent(Student_Program stu) {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        session.delete(stu);
+//        query.setParameter("stu_id", stu.getId());
+
+        session.getTransaction().commit();
+        return true;
     }
 }
