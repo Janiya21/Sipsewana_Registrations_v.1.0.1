@@ -8,7 +8,9 @@ import java.util.List;
 @Table(name="student")
 public class Student {
     @Id
-    @GeneratedValue
+    /*@GeneratedValue*/
+    @GeneratedValue(strategy = GenerationType.AUTO)/*(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)*/
     private int id;
     private String name;
     private String dob;
@@ -16,7 +18,7 @@ public class Student {
     private String address;
     private String tel;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Student_Program> programList = new ArrayList<>();
 
     public Student() {

@@ -95,31 +95,48 @@ public class StudentDAOImpl implements StudentDAO {
         return student;
     }
 
-    public Student_Program getRelevantStuPro(int stu_id){
+    public List<Student_Program> getRelevantStuPro(int stu_id){
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         NativeQuery<Student_Program> nativeQuery = session.createNativeQuery("SELECT * FROM Student_Program WHERE student_id = :id", Student_Program.class);
         nativeQuery.setParameter("id",stu_id);
 
-        Student_Program sp = nativeQuery.setMaxResults(1).uniqueResult();
+        List<Student_Program> list = nativeQuery.list();
 
-        nativeQuery.list();
-
-        System.out.println(sp.getId()+"pppppppppppppppp");
+        for (Student_Program student_program : list) {
+            System.out.println("id : " + student_program.getId());
+        }
 
         transaction.commit();
-        return sp;
+
+        session.close();
+        return list;
     }
 
-    public boolean deleteStudent(Student_Program stu) {
+    public boolean deleteStudent(List<Student_Program> stu) {
+        for (Student_Program student_program : stu) {
+            System.out.println("id fuck : " + student_program.getId());
+        }
+
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
 
-        session.delete(stu);
-//        query.setParameter("stu_id", stu.getId());
+        for (Student_Program student_program : stu) {
 
-        session.getTransaction().commit();
+            /* session.delete(student_program); -> Error- CASCADE should off in this situation */
+
+            session.createQuery("DELETE FROM Student_Program sp WHERE sp.id =:id").
+                    setParameter("id", student_program.getId()).executeUpdate();
+
+            session.createQuery("DELETE FROM Student s WHERE s.id = :id").
+                    setParameter("id", student_program.getStudent().getId()).executeUpdate();
+
+            System.out.println("Delete Query Done");
+        }
+
+        transaction.commit();
+
         return true;
     }
 }

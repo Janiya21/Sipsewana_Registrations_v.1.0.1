@@ -6,6 +6,7 @@ import lk.ijse.pos.hibernate.dao.DAOType;
 import lk.ijse.pos.hibernate.dao.custom.impl.ProgramDAOImpl;
 import lk.ijse.pos.hibernate.dao.custom.impl.StudentDAOImpl;
 import lk.ijse.pos.hibernate.dto.StudentDTO;
+import lk.ijse.pos.hibernate.dto.Student_ProgramDTO;
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
 import lk.ijse.pos.hibernate.entity.Student_Program;
@@ -35,15 +36,30 @@ public class StudentBOImpl implements StudentBO {
 
     }
 
+    @Override
     public boolean addStudentProgram(Student stu, List<Program> pro, String date){
         return studentDAO.addStudentProgram(stu,pro,date);
     }
 
-    public boolean deleteStudent(Student_Program stu){
-        return studentDAO.deleteStudent(stu);
+    @Override
+    public List<Student_ProgramDTO> getStuPro(int stu_id){
+        List<Student_Program> relevantStuPro = studentDAO.getRelevantStuPro(stu_id);
+        List<Student_ProgramDTO> spd = new ArrayList<>();
+
+        for (Student_Program sp : relevantStuPro) {
+            spd.add(new Student_ProgramDTO(sp.getId(),sp.getProgram(),sp.getStudent(),sp.getReg_date()));
+        }
+
+        return spd;
     }
 
-    public Student_Program getStuPro(int stu_id){
-        return studentDAO.getRelevantStuPro(stu_id);
+    @Override
+    public boolean deleteStudent(List<Student_ProgramDTO> stu){
+        List<Student_Program> st = new ArrayList<>();
+
+        for (Student_ProgramDTO sp : stu) {
+            st.add(new Student_Program(sp.getId(),sp.getStuId(),sp.getProgramId(),sp.getRegDate()));
+        }
+        return studentDAO.deleteStudent(st);
     }
 }

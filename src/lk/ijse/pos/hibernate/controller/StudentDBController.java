@@ -19,6 +19,7 @@ import lk.ijse.pos.hibernate.bo.custom.impl.ProgramBOImpl;
 import lk.ijse.pos.hibernate.bo.custom.impl.StudentBOImpl;
 import lk.ijse.pos.hibernate.dto.ProgramDTO;
 import lk.ijse.pos.hibernate.dto.StudentDTO;
+import lk.ijse.pos.hibernate.dto.Student_ProgramDTO;
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
 import lk.ijse.pos.hibernate.entity.Student_Program;
@@ -152,25 +153,31 @@ public class StudentDBController {
 
     @FXML
     void dltStudent(ActionEvent event) {
-
-        Student_Program stuPro = studentBOImpl.getStuPro(selectedStudent.getId());
-
-        deleteStudent(stuPro);
+        studentBOImpl.deleteStudent(studentBOImpl.getStuPro(selectedStudent.getId()));
     }
-
-    private void deleteStudent(Student_Program student){
-        studentBOImpl.deleteStudent(student);
-    }
-
 
     @FXML
     void refreshStudent(ActionEvent event) {
+        /*List<Student_ProgramDTO> stuPro = studentBOImpl.getStuPro(Integer.parseInt(searchStuId.getText()));
+        tmList.clear();
+        studentView.refresh();
 
+        for (Student_ProgramDTO sp : stuPro) {
+            tmList.add(new StudentDTO(sp.getId(),sp.getProgramId(),sp.getStuId(),sp.getFee()));
+        }
+        tmList.add(stuPro);*/
     }
 
     @FXML
     void searchStudent(ActionEvent event) {
+        /*List<Student_ProgramDTO> stuPro = studentBOImpl.getStuPro(Integer.parseInt(searchStuId.getText()));
+        tmList.clear();
+        studentView.refresh();
 
+        for (Student_ProgramDTO sp : stuPro) {
+            tmList.add(new StudentDTO(sp.getId(),sp.getProgramId(),sp.getStuId(),sp.getFee()));
+        }
+        tmList.add(stuPro);*/
     }
 
     private void loadNext(String name) throws IOException {

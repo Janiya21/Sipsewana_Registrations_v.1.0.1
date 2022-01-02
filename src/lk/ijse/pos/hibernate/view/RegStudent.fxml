@@ -40,7 +40,7 @@
       <Button fx:id="btnNext" layoutX="777.0" layoutY="497.0" mnemonicParsing="false" onAction="#goNextOnAction" prefHeight="39.0" prefWidth="137.0" styleClass="btn2" text="Next" />
       <JFXTextArea fx:id="txtAddress" layoutX="23.0" layoutY="298.0" prefHeight="68.0" prefWidth="448.0" promptText="Address" />
       <Separator layoutX="497.0" layoutY="150.0" orientation="VERTICAL" prefHeight="415.0" prefWidth="7.0" />
-      <Label fx:id="lblDate" layoutX="784.0" layoutY="21.0" prefHeight="32.0" prefWidth="89.0" text="2021-12-17">
+      <Label fx:id="lblDate" layoutX="765.0" layoutY="22.0" prefHeight="32.0" prefWidth="89.0" text="2021-12-17">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="17.0" />
          </font>
@@ -50,7 +50,7 @@
             <Font name="Berlin Sans FB Demi Bold" size="17.0" />
          </font>
       </Label>
-      <Separator layoutX="870.0" layoutY="18.0" orientation="VERTICAL" prefHeight="39.0" prefWidth="7.0" />
+      <Separator layoutX="858.0" layoutY="18.0" orientation="VERTICAL" prefHeight="39.0" prefWidth="7.0" />
       <TableView fx:id="tblDetails" layoutX="548.0" layoutY="163.0" prefHeight="250.0" prefWidth="359.0">
         <columns>
           <TableColumn fx:id="colCourseId" prefWidth="152.0" text="Course Id" />
@@ -58,7 +58,7 @@
         </columns>
       </TableView>
       <JFXComboBox fx:id="cmbCourse" layoutX="20.0" layoutY="509.0" prefHeight="31.0" prefWidth="301.0" promptText="course Id" />
-      <Button fx:id="btnAdd" layoutX="347.0" layoutY="494.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="128.0" text="Add" />
+      <Button fx:id="btnAdd" layoutX="347.0" layoutY="494.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="46.0" prefWidth="128.0" styleClass="btn" text="Add" />
       <Label layoutX="720.0" layoutY="433.0" prefHeight="31.0" prefWidth="89.0" text="Total  :" textFill="#b92222">
          <font>
             <Font name="System Bold" size="21.0" />

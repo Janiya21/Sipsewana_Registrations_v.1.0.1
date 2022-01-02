@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ProgramBO extends SuperBO {
     public List<ProgramDTO> getAllPrograms();
-    public boolean addProgram(Program program);
+    public boolean addProgram(ProgramDTO program);
     public String generateId();
     public ProgramDTO getProgramObject(String obj);
 }

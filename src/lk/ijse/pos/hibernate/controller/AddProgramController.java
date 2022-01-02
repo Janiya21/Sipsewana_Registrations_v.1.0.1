@@ -93,14 +93,15 @@ public class AddProgramController {
     }
 
     @FXML
-    void addProgramOnAction(ActionEvent event) {
-        Program program = new Program(lblProgramId.getText(),"Software Engineering","2 years",200000);
+    void addProgramOnAction(ActionEvent event) throws IOException {
+        ProgramDTO program = new ProgramDTO(lblProgramId.getText(),txtName.getText(),txtDuration.getText(),Integer.parseInt(txtFee.getText()));
 
         boolean b = programBOImpl.addProgram(program);
         if(b){
-            new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
             setTableData();
             tblPrograms.refresh();
+            loadNext("MenuForm");
+            new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
         }
@@ -143,24 +144,4 @@ public class AddProgramController {
         }
         tblPrograms.setItems(prList);
     }
-
-    /*private void loadDateAndTime() {
-        // load Date
-        Date date = new Date();
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        lblDate.setText(f.format(date));
-
-        // load Time
-        Timeline time = new Timeline(new KeyFrame(Duration.ZERO, e -> {
-            LocalTime currentTime = LocalTime.now();
-            lblTime.setText(
-                    currentTime.getHour() + " : " + currentTime.getMinute() +
-                            " : " + currentTime.getSecond()
-            );
-        }),
-                new KeyFrame(Duration.seconds(1))
-        );
-        time.setCycleCount(Animation.INDEFINITE);
-        time.play();
-    }*/
 }

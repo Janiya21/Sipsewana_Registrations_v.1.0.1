@@ -6,7 +6,9 @@ import javax.persistence.*;
 @Table(name="student_program")
 public class Student_Program {
     @Id
-    @GeneratedValue
+    /*@GeneratedValue*/
+    @GeneratedValue(strategy = GenerationType.AUTO)/*(strategy = GenerationType.IDENTITY)
+    @Column(unique = true, nullable = false)*/
     private int id;
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -42,8 +42,9 @@ public class ProgramBOImpl implements ProgramBO {
     }
 
     @Override
-    public boolean addProgram(Program program){
-        return programDAO.addProgram(program);
+    public boolean addProgram(ProgramDTO program){
+        Program pr = new Program(program.getProgramId(),program.getProgram(),program.getDuration(),program.getFee());
+        return programDAO.addProgram(pr);
     }
 
     @Override

@@ -130,10 +130,16 @@ public class RegStudentController {
         }
 
         if(studentBOImpl.addStudentProgram(student1,programList,lblDate.getText())){
+            clearAll();
             new Alert(Alert.AlertType.CONFIRMATION,"Program Added Done").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Program Not Added!").show();
         }
+    }
+
+    private void clearAll(){
+        txtTelephone.clear();txtMail.clear();txtName.clear();txtAddress.clear();txtDateOfBirth.setValue(null);
+        allList.clear(); tblDetails.refresh();
     }
 
     @FXML
