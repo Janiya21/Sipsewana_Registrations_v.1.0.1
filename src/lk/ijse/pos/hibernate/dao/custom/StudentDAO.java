@@ -12,5 +12,5 @@ public interface StudentDAO extends SuperDAO {
     public List<Student> getAll() throws Exception;
     public int getLastStudent();
     public boolean addStudent(List<Student_Program> stp);
-    public Student getStudentObject(String hql);
+    public Student getStudentObject(int hql);
 }

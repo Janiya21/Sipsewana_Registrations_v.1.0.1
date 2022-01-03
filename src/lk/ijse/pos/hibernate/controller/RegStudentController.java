@@ -151,6 +151,15 @@ public class RegStudentController {
 
     }
 
+    @FXML
+    void updateStudentOnAction(ActionEvent event) throws IOException {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../view/AddOldStudent.fxml")));
+        primaryStage.setTitle("Register Window");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
     private void loadNext(String name) throws IOException {
         Stage stage = (Stage) btnBack.getScene().getWindow();
         stage.close();
@@ -172,6 +181,8 @@ public class RegStudentController {
         tot+=program_fee;
         lblTotal.setText(String.valueOf(tot));
     }
+
+
 
     private void loadDateAndTime() {
         // load Date

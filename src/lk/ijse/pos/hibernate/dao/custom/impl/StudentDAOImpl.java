@@ -1,5 +1,6 @@
 package lk.ijse.pos.hibernate.dao.custom.impl;
 
+import com.mysql.cj.x.protobuf.MysqlxExpr;
 import lk.ijse.pos.hibernate.dao.custom.StudentDAO;
 import lk.ijse.pos.hibernate.entity.Program;
 import lk.ijse.pos.hibernate.entity.Student;
@@ -9,6 +10,7 @@ import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 
@@ -85,7 +87,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public Student getStudentObject(String hql){
+    public Student getStudentObject(int hql){
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -122,6 +124,8 @@ public class StudentDAOImpl implements StudentDAO {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
+        int id = 0;
+
         for (Student_Program student_program : stu) {
 
             /* session.delete(student_program); -> Error- CASCADE should off in this situation */
@@ -129,14 +133,29 @@ public class StudentDAOImpl implements StudentDAO {
             session.createQuery("DELETE FROM Student_Program sp WHERE sp.id =:id").
                     setParameter("id", student_program.getId()).executeUpdate();
 
-            session.createQuery("DELETE FROM Student s WHERE s.id = :id").
-                    setParameter("id", student_program.getStudent().getId()).executeUpdate();
+            id = student_program.getStudent().getId();
 
             System.out.println("Delete Query Done");
         }
 
+        session.createQuery("DELETE FROM Student s WHERE s.id = :id").
+                setParameter("id", id).executeUpdate();
+
         transaction.commit();
 
+        return true;
+    }
+
+    public boolean updateStudent(Student student, List<Program> program, String date){
+        Session session=sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        System.out.println("Thisssssss : " + program + " oooooooooooo: "+student.getId());
+
+        session.createQuery("UPDATE Student_Program sp SET sp.student.programList = :proList WHERE sp.student = :sId").
+                setParameter("proList", program).setParameter("sId",student).executeUpdate();
+
+        transaction.commit();
         return true;
     }
 }

@@ -96,7 +96,9 @@ public class StudentDBController {
 
         studentView.getSelectionModel().selectedItemProperty().addListener(((observable, oldValue, newValue) -> {
             selectedStudent=newValue ;
-            setProgramData(newValue.getId());
+            if(newValue!=null){
+                setProgramData(newValue.getId());
+            }
 
         }));
 
@@ -152,8 +154,21 @@ public class StudentDBController {
     }
 
     @FXML
-    void dltStudent(ActionEvent event) {
+    void dltStudent(ActionEvent event) throws Exception {
         studentBOImpl.deleteStudent(studentBOImpl.getStuPro(selectedStudent.getId()));
+        if(!tmList.isEmpty()){
+            tmList.clear();
+            studentView.refresh();
+        }
+
+        if(!programObsList.isEmpty()){
+            programObsList.clear();
+            tblProgramDetails.refresh();
+        }
+
+        lblTotal.setText("000000.00");
+
+        setTableData();
     }
 
     @FXML

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="313.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.pos.hibernate.controller.AddOldStudentController">
+   <children>
+      <Label layoutX="21.0" layoutY="22.0" prefHeight="29.0" prefWidth="226.0" text="Add Old Student">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="22.0" />
+         </font>
+      </Label>
+      <Separator layoutX="14.0" layoutY="64.0" prefHeight="6.0" prefWidth="513.0" />
+      <JFXComboBox fx:id="cmbStudentIds" layoutX="37.0" layoutY="114.0" onAction="#getStudentIdsOnAction" prefHeight="31.0" prefWidth="218.0" promptText="Student Ids" />
+      <JFXComboBox layoutX="33.0" layoutY="207.0" onAction="#programIdOnAction" prefHeight="31.0" prefWidth="226.0" promptText="new Program Id" />
+      <JFXTextField fx:id="txtStudentId" layoutX="280.0" layoutY="114.0" prefHeight="31.0" prefWidth="236.0" promptText="Student Name" />
+      <JFXButton layoutX="295.0" layoutY="190.0" onAction="#updateOnAction" prefHeight="48.0" prefWidth="218.0" styleClass="btn2" stylesheets="@../assets/css/db.css" text="Update" />
+   </children>
+</AnchorPane>

@@ -32,7 +32,7 @@
       </Label>
       <Separator layoutY="65.0" prefHeight="8.0" prefWidth="950.0" />
       <Label layoutX="33.0" layoutY="184.0" prefHeight="21.0" prefWidth="137.0" />
-      <JFXTextField fx:id="txtName" layoutX="17.0" layoutY="95.0" prefHeight="31.0" prefWidth="902.0" promptText="Student Name" />
+      <JFXTextField fx:id="txtName" layoutX="17.0" layoutY="95.0" prefHeight="31.0" prefWidth="745.0" promptText="Student Name" />
       <JFXDatePicker fx:id="txtDateOfBirth" layoutX="17.0" layoutY="163.0" prefHeight="31.0" prefWidth="448.0" promptText="Date Of Birth" />
       <JFXTextField fx:id="txtMail" layoutX="17.0" layoutY="230.0" prefHeight="31.0" prefWidth="448.0" promptText="Email" />
       <JFXTextField fx:id="txtTelephone" layoutX="23.0" layoutY="417.0" prefHeight="31.0" prefWidth="448.0" promptText="Telephone" />
@@ -65,5 +65,7 @@
          </font>
       </Label>
       <Label fx:id="lblTotal" layoutX="813.0" layoutY="438.0" prefHeight="21.0" prefWidth="77.0" text="00000.00" />
+      <Button disable="true" layoutX="804.0" layoutY="95.0" mnemonicParsing="false" onAction="#updateStudentOnAction" text="Old Student" />
+      <Separator layoutX="777.0" layoutY="82.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="7.0" />
    </children>
 </AnchorPane>
