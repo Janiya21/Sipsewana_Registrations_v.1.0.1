@@ -21,7 +21,7 @@ public class AppInitializer extends Application {
         Parent root = FXMLLoader.load(this.getClass().getResource("view/MenuForm.fxml"));
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-        stage.setTitle("Login Session");
+        stage.setTitle("Menu Session");
         stage.setScene(scene);
         stage.setResizable(false);
 
