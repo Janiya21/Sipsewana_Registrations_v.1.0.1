@@ -58,6 +58,7 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
 
+    @Override
     public boolean addStudentProgram(Student stu, List<Program> pro, String date){
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -99,6 +100,7 @@ public class StudentDAOImpl implements StudentDAO {
         return student;
     }
 
+    @Override
     public List<Student_Program> getRelevantStuPro(int stu_id){
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -120,9 +122,6 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean deleteStudent(List<Student_Program> stu) {
-        for (Student_Program student_program : stu) {
-            System.out.println("id fuck : " + student_program.getId());
-        }
 
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
