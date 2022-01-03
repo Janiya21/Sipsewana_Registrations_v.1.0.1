@@ -148,7 +148,6 @@ public class RegStudentController {
 
         ProgramDTO programObject = programBOImpl.getProgramObject(cmbCourse.getValue());
         allProgDetails.add(programObject);
-
     }
 
     @FXML

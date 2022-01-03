@@ -57,6 +57,7 @@ public class StudentDAOImpl implements StudentDAO {
         return true;
     }
 
+
     public boolean addStudentProgram(Student stu, List<Program> pro, String date){
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -75,6 +76,7 @@ public class StudentDAOImpl implements StudentDAO {
         return true;
     }
 
+    @Override
     public int getLastStudent() {
         Session session=sessionFactory.openSession();
         session.beginTransaction();
@@ -116,6 +118,7 @@ public class StudentDAOImpl implements StudentDAO {
         return list;
     }
 
+    @Override
     public boolean deleteStudent(List<Student_Program> stu) {
         for (Student_Program student_program : stu) {
             System.out.println("id fuck : " + student_program.getId());
@@ -146,11 +149,10 @@ public class StudentDAOImpl implements StudentDAO {
         return true;
     }
 
+    @Override
     public boolean updateStudent(Student student, List<Program> program, String date){
         Session session=sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-
-        System.out.println("Thisssssss : " + program + " oooooooooooo: "+student.getId());
 
         session.createQuery("UPDATE Student_Program sp SET sp.student.programList = :proList WHERE sp.student = :sId").
                 setParameter("proList", program).setParameter("sId",student).executeUpdate();
