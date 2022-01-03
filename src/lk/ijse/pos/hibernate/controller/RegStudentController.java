@@ -183,7 +183,6 @@ public class RegStudentController {
     }
 
 
-
     private void loadDateAndTime() {
         // load Date
         Date date = new Date();
